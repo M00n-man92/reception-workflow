@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Management Documentation</title>
+
+```
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+
+    window.mermaid = mermaid;
+
+    mermaid.initialize({
+        startOnLoad: false,
+        theme: 'default',
+        securityLevel: 'loose'
+    });
+</script>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        height: 100vh;
+    }
+
+    .sidebar {
+        width: 280px;
+        background: #1f2937;
+        color: white;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    .sidebar h2 {
+        margin-top: 0;
+    }
+
+    .sidebar a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        border-radius: 6px;
+        margin-bottom: 6px;
+    }
+
+    .sidebar a:hover {
+        background: #374151;
+    }
+
+    .content {
+        flex: 1;
+        padding: 30px;
+        overflow-y: auto;
+    }
+
+    .mermaid {
+        text-align: center;
+        margin: 30px 0;
+    }
+
+    pre {
+        background: #f5f5f5;
+        padding: 15px;
+        overflow-x: auto;
+    }
+
+    code {
+        font-family: Consolas, monospace;
+    }
+    .hero {
+background: linear-gradient(135deg, #2563eb, #1e40af);
+color: white;
+padding: 40px;
+border-radius: 16px;
+margin-bottom: 30px;
+}
+
+.hero h1 {
+margin: 0;
+font-size: 2.4rem;
+}
+
+.hero p {
+margin-top: 12px;
+opacity: 0.9;
+max-width: 700px;
+}
+
+.stats-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 16px;
+margin-bottom: 30px;
+}
+
+.stat-card {
+background: white;
+border-radius: 12px;
+padding: 20px;
+text-align: center;
+box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+
+.stat-card h3 {
+margin: 0;
+font-size: 2rem;
+color: #2563eb;
+}
+
+.stat-card span {
+color: #6b7280;
+}
+
+.overview-card {
+background: white;
+border-radius: 12px;
+padding: 24px;
+margin-bottom: 30px;
+box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+
+.workflow-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 20px;
+}
+
+.workflow-card {
+background: white;
+padding: 24px;
+border-radius: 12px;
+cursor: pointer;
+transition: all .2s ease;
+box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+
+.workflow-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+
+.workflow-card h3 {
+margin-top: 0;
+color: #111827;
+}
+
+.workflow-card p {
+color: #6b7280;
+margin-bottom: 0;
+}
+
+.content {
+background: #f3f4f6;
+}
+
+</style>
+```
+
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Reception Management</h2>
+
+```
+<a href="#" onclick="loadDoc('summarize.md')">Executive Workflow</a>
+<a href="#" onclick="loadDoc('auth.md')">Authentication</a>
+<a href="#" onclick="loadDoc('pairing.md')">Tablet Pairing</a>
+<a href="#" onclick="loadDoc('appointment.md')">Appointments</a>
+<a href="#" onclick="loadDoc('visitorcheckin.md')">Check-In</a>
+
+<a href="#" onclick="loadDoc('visitorcheckout.md')">Checkout</a>
+
+```
+
+</div>
+
+<div class="content" id="content">
+
+```
+<div class="hero">
+    <h1>Reception Management System</h1>
+    <p>
+        Documentation for visitor registration, appointment scheduling,
+        check-in, approval workflows, and visitor lifecycle management.
+    </p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>6</h3>
+        <span>Workflows</span>
+    </div>
+
+    <div class="stat-card">
+        <h3>5</h3>
+        <span>Visitor Statuses</span>
+    </div>
+
+    <div class="stat-card">
+        <h3>2</h3>
+        <span>Login Methods</span>
+    </div>
+
+    <div class="stat-card">
+        <h3>1</h3>
+        <span>Approval Process</span>
+    </div>
+</div>
+
+<div class="overview-card">
+    <h2>System Overview</h2>
+
+<p>
+The Visitor Management System enables reception teams to efficiently manage
+visitor arrivals, appointments, approvals, and departures from a centralized
+dashboard. The application streamlines the visitor experience while ensuring
+hosts are informed and involved in the approval process.
+</p>
+
+<p>
+Receptionists can schedule appointments in advance or register walk-in visitors,
+capture visitor details, optionally collect identification and signatures,
+and initiate the check-in process. Once a visitor has been registered, the
+assigned host receives a Microsoft Teams notification containing the visitor's
+information and can approve or reject the visit directly from Teams.
+</p>
+
+<p>
+The system tracks each visitor throughout their entire lifecycle, from
+appointment scheduling through check-in, approval, and checkout. Real-time
+visitor status updates allow reception staff to quickly identify visitors
+currently on-site, pending approval requests, completed visits, and cancelled
+appointments.
+</p>
+
+<h3>Core Capabilities</h3>
+
+<ul>
+    <li>Secure authentication using Email/Password or Microsoft 365 accounts</li>
+    <li>Reception desk configuration and floor assignment management</li>
+    <li>Visitor appointment scheduling and administration</li>
+    <li>Walk-in visitor registration and check-in workflows</li>
+    <li>Optional visitor ID capture and digital signature collection</li>
+    <li>Host approval and rejection workflows through Microsoft Teams</li>
+    <li>Real-time visitor status tracking and dashboard monitoring</li>
+    <li>Visitor checkout and visit completion management</li>
+</ul>
+
+<h3>Visitor Lifecycle</h3>
+
+<p>
+Visitors typically progress through the following statuses:
+<strong>Scheduled → Pending → Checked In → Checked Out</strong>.
+Visitors may also transition to a <strong>Cancelled</strong> status when a
+host or receptionist rejects the visit request.
+</p>
+
+</div>
+
+<div class="workflow-grid">
+
+    <div class="workflow-card" onclick="loadDoc('auth.md')">
+        <h3>Authentication</h3>
+        <p>Login and desk configuration workflow.</p>
+    </div>
+
+    <div class="workflow-card" onclick="loadDoc('appointment.md')">
+        <h3>Appointments</h3>
+        <p>Schedule and manage visitor appointments.</p>
+    </div>
+
+    <div class="workflow-card" onclick="loadDoc('visitorcheckin.md')">
+        <h3>Check-In</h3>
+        <p>Visitor registration and onboarding process.</p>
+    </div>
+
+    <div class="workflow-card" onclick="loadDoc('pairing.md')">
+        <h3>Tablet Pairing</h3>
+        <p>Receptionist pairs with the desk tablet.</p>
+    </div>
+
+    <div class="workflow-card" onclick="loadDoc('visitorcheckout.md')">
+        <h3>Checkout</h3>
+        <p>Visitor departure process.</p>
+    </div>
+
+    <div class="workflow-card" onclick="loadDoc('summarize.md')">
+        <h3>Workflow Lifecycle</h3>
+        <p>System transitions and Workflow.</p>
+    </div>
+
+</div>
+```
+
+</div>
+
+
+<script>
+async function loadDoc(file) {
+    const response = await fetch(`diagrams/${file}`);
+    const markdown = await response.text();
+
+    document.getElementById('content').innerHTML =
+        marked.parse(markdown);
+
+    document.querySelectorAll('code.language-mermaid').forEach((el) => {
+    const parent = el.parentElement;
+
+    const div = document.createElement('div');
+    div.className = 'mermaid';
+    div.textContent = el.textContent;
+
+    parent.replaceWith(div);
+});
+
+await mermaid.run();
+}
+
+window.loadDoc = loadDoc;
+</script>
+
+</body>
+</html>
